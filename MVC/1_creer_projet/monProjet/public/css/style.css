@@ -1,6 +1,7 @@
 body {
     background-color: #dedee5;
 }
-h1, p {
-    color: #52b129;
+h1, p, div {
+    color: #071152;
+    font-weight: bold;
 }
