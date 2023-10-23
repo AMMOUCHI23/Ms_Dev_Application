@@ -20,7 +20,41 @@ class ArtistRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Artist::class);
     }
+    /*
+     // """""""" 1- Exemple d'utilisation de Doctrine Query Langage (DQL)
+    public function getSomeArtists($name)
+    {
+        //$name est un paramètre qui pour cet exemple a come valeur "Neil";
+        $entityManager = $this->getEntityManager(); //on instancie l'entity manager
+    
+        $query = $entityManager->createQuery( //on crée la requête 
+            'SELECT a
+            FROM App\Entity\Artist a
+            WHERE a.name  like :name'
+        )->setParameter('name', '%'.$name.'%');
+    
+        // retourne un tableau d'objets de type Artist
+        return $query->getResult();
+    
+    }
+    */
+     // 2- Exemple d'utilisation de requete de QueryBuilder 
 
+    public function getSomeArtists($name)
+    {
+        //$name est un paramètre qui pour cet exemple a comme valeur "Neil";
+
+        $qb = $this->createQueryBuilder('a');
+        $qb
+            ->andWhere('a.name like :name') //le `placeholder, comme en PDO!
+            ->setParameter('name', '%' . $name . '%')
+            ->orderBy('a.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery();
+            $query = $qb->getQuery();
+        $artists = $query->getResult();
+        return $artists;
+    }
 //    /**
 //     * @return Artist[] Returns an array of Artist objects
 //     */

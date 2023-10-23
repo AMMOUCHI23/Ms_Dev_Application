@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+ {% block body %}
+     <div class="container">
+         <div class="row mt-5">
+             <div class="col-10 mx-auto">
+                 <h1>Nombre d'artistes est {{ artistes | length }}, et le Nombre total de discs est {{ discs | length }}.</h1>
+                 
+                 {# Utiliser une boucle for pour parcourir toute la table artist #}
+                 {% for artiste in artistes %}
+                 <span class="d-block text-premary">
+                     {{ artiste.name |upper  }} - <b class="btn-primary text-success p-1">{{ artiste.discs | length }}</b> disques
+                 </span>
+                 {% endfor %}
+
+                 {# Exemple d'utilisation du filtre number_format #}
+                 <p> Le total de la commande est : {{total | number_format}} euros.</p>
+             </div>
+         </div>
+     </div>
+ {% endblock %}

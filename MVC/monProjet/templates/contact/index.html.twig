@@ -12,14 +12,14 @@
     <div class="row">
         <div class="col-9 mx-auto mb-2 mt-4">
            {{ form_label(form.object, "Mon libellé a été modifié") }}
-             {{ form_widget(form.object, {'attr': {'class': 'btn-light'} }) }}
+             {{ form_widget(form.object, {'attr': {'class': 'btn-light',placeholder:"Objet"} }) }}
              {{ form_errors(form.object) }}    
         </div>
         <div class="col-9 mx-auto mb-2">
-            {{ form_row(form.email) }}
+            {{ form_row(form.email,{'attr': {placeholder:"Votre Email"} }) }}
         </div>
         <div class="col-9 mx-auto mb-2">
-            {{ form_row(form.message) }}
+            {{ form_row(form.message, {'attr': {placeholder:"Votre Message ..."} }) }}
         </div>
            <div class="col-9 mx-auto mb-2">
             {{ form_row(form.save) }}
