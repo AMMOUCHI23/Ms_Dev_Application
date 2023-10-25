@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Artist;
+use App\Entity\Disc;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Mailer\MailerInterface;
 
 /**
  * @extends ServiceEntityRepository<Artist>
