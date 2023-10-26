@@ -29,34 +29,43 @@ class ContactController extends AbstractController
             // Traitement des données du formulaire
             $data = $form->getData();
             //on stocke les données récupérées dans la variable $message
-            $message = $data;
+            $contact = $data;
 
-            $entityManager->persist($message);
+            $entityManager->persist($contact);
             $entityManager->flush();
+           // dd($data);
+
 
             // envoie de l'email
             $email = (new TemplatedEmail())
             ->from('hello@example.com')
-            ->to(new Address('ryan@example.com'))
-            ->subject('Time for Symfony Mailer!')
-            ->htmlTemplate('emails/signup.html.twig')
+            ->to($contact->getEmail())
+            ->subject('Les contacts')
+            ->htmlTemplate('emails/contact_email.html.twig')
 
             ->context([
-                $dateTime = new \DateTime('+7 days'),
-                $formattedDateTime = $dateTime->format('Y-m-d'),
-                'expiration_date' => $formattedDateTime,
-                'username' => 'foo',
-
+                
+                $objet = $contact->getObject(),
+                $mail = $contact->getEmail(),
+                $demande = $contact->getMessage(),
+                'objet' => $objet,
+                'mail' =>$mail,
+                'message'=> $demande,
+                'data' => $data,
             ]);
+            try {
+                $mailer->send($email);
+                return $this->redirectToRoute('app_accueil');
+            } catch (MailerInterface $e) {
+                echo "error d'envoi d'email";
+            }
 
-
-            // Redirection vers accueil
-           // return $this->redirectToRoute('app_accueil');
+           
         }
 
         return $this->render('contact/index.html.twig', [
 //            'form' => $form->createView(),
-              'form' => $form
+              'form' => $form ,
         ]);
     }
 }
