@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use App\Form\DemoFormType;
 use App\Form\ContactFormType;
 use Doctrine\ORM\EntityManagerInterface;
+use MailService;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +18,7 @@ use Symfony\Component\Mime\Address;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function sendEmail(MailerInterface $mailer,Request $request, EntityManagerInterface $entityManager): Response
+    public function sendEmail(MailerInterface $mailer,Request $request, EntityManagerInterface $entityManager, MailService $ms): Response
     {
         $form = $this->createForm(ContactFormType::class);
         $form->handleRequest($request);
@@ -35,7 +36,11 @@ class ContactController extends AbstractController
             $entityManager->flush();
            // dd($data);
 
+           $email = $ms->sendMail('hello@example.com', $message->getEmail(), $message->getObject(), $message->getMessage() );
+           //            dd($message->getEmail());
+           
 
+/*
             // envoie de l'email
             $email = (new TemplatedEmail())
             ->from('hello@example.com')
@@ -59,7 +64,7 @@ class ContactController extends AbstractController
             } catch (MailerInterface $e) {
                 echo "error d'envoi d'email";
             }
-
+*/
            
         }
 
