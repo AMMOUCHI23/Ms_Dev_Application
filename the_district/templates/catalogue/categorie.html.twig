@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block body %}
+
+ <div class="container text-center text-primary mt-5">
+  <h1 class="text-center"> Nos Catégorie des plats </h1>
+        <div class="row justify-content-center ">
+    {% for categorie in categories %}
+    <div class="col-justify-content  col-sm-6 col-md-4 my-4 survol">
+    <a href = "{{ path('plats_categorie', {id: categorie.id}) }}"><img  class="img-thumbnail rounded-circle"  
+        src="{{ asset('assets/img/category/' ~ categorie.image) }}"  width="400" height="400" ></a>
+            <h3 class="nomCategorie my-2"> {{ categorie.libelle }}</h3>
+        
+        </div>
+    {% endfor %}
+       </div>
+    </div>
+
+ 
+            
+  
+           
+{% endblock %}

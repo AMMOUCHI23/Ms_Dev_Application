@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+{% block body %}
+	<div class="container">
+
+
+		<h1 class="my-4">Mon Panier</h1>
+		<div class="count">
+			<h4>
+				Vous avez
+				{{ data|length}}
+				produit(s) dans votre panier :
+			</h4>
+		</div>
+		<table class="table table-hover  text-center mt-3">
+			<thead>
+				<tr>
+					<th scope="col">Image</th>
+					<th scope="col">Plat</th>
+					<th scope="col">Prix Unitaire</th>
+					<th scope="col">Quantité</th>
+					<th scope="col">Sous total</th>
+					<th scope="col">Modifier la Quantité</th>
+					<th scope="col">Supprimer un produit</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for element in data %}
+
+					<tr class="table-primary ">
+						<td scope="row"> <img src="{{ asset('assets/img/category/' ~ element.plat.image) }}" width="150" alt="..."></td>
+						<td>{{element.plat.libelle}}</td>
+						<td>{{element.plat.prix}} €</td>
+						<td>{{element.quantite}}</td>
+						<td>{% set result = (element.quantite)*(element.plat.prix) %}
+							{{result}} €</td>
+
+						<td>
+							<a href="{{path('modifier',{id: element.plat.id}) }}" class="btn btn-warning mx-3">-</a>
+							<a href="{{path('ajoutPanier',{id: element.plat.id}) }}" class="btn btn-success">+</a>
+						</td>
+						<td>
+							<a href="{{path('supprime',{id: element.plat.id}) }}" class="btn btn-danger mx-3">Supprimer</a>
+
+						</td>
+						{#
+						       <td> <a href="{{ path ( 'ingredient.edit', {id:ingredient.id})}}" class="btn btn-info"> Modifier </a> </td>
+						      <td> <a href="{{ path ('ingredient.sup', {id:ingredient.id})}}" class="btn btn-danger"> Supprimer </a> </td>
+						      #}
+
+
+					</tr>
+
+				{% else %}
+					<tr class="d-flex justify-content-start">
+						<td colspan="7" class="text-danger ">Votre panier est vide</td>
+					</tr>
+				{% endfor %}
+
+
+			</tbody>
+			<tfoot>
+				<tr >
+        <th colspan="6" class="text-right "><h2 class="text-success" >Total</h2></th>
+        <td ><h4>{{ total }} €</h4</td>
+				</tr>
+			</tfoot>
+		</table>
+    <div>
+    <a href="{{ path('vider') }}" class="btn btn-danger btn-lg">Vider mon panier</a>
+
+    </div>
+     <div class="row text-center my-5 ">
+                    <div class="col-6">
+                         <a href="" class="btn btn-primary btn-lg m-4">Continuer mes achats</a>
+                    </div>
+                    <div class="col-6">
+                       <a href="" class="btn btn-success btn-lg m-4 ">Passer la commande</a>
+                    </div>
+
+                </div>
+
+
+    
+    {#
+		<a href="{{ path('app_orders_add') }}" class="btn btn-primary">Valider le panier</a>#}
+	</div>
+
+</table></div>{% endblock %}

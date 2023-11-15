@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<div class="container col-8">
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <h1 class="text-primary mt-4">Formulaire d'inscription</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+    <div class="row">
+	
+		<div class="col mt-2 ">
+
+			{{ form_label(registrationForm.nom) }}
+			{{ form_widget(registrationForm.nom) }}
+			{{ form_errors(registrationForm.nom) }}
+		</div>
+        <div class=" col mt-2 ">
+
+			{{ form_label(registrationForm.prenom) }}
+			{{ form_widget(registrationForm.prenom) }}
+			{{ form_errors(registrationForm.prenom) }}
+		</div>
+	</div>
+    <div class="row">
+	
+		<div class="col-4 mt-2 ">
+
+			{{ form_label(registrationForm.telephone) }}
+			{{ form_widget(registrationForm.telephone) }}
+			{{ form_errors(registrationForm.telephone) }}
+		</div>
+     
+	</div>
+        <div class="row">
+	
+		<div class="col mt-2 ">
+
+			{{ form_label(registrationForm.adresse) }}
+			{{ form_widget(registrationForm.adresse) }}
+			{{ form_errors(registrationForm.adresse) }}
+		</div>
+        <div class=" col mt-2 ">
+
+			{{ form_label(registrationForm.cp) }}
+			{{ form_widget(registrationForm.cp) }}
+			{{ form_errors(registrationForm.cp) }}
+		</div>
+            <div class=" col mt-2 ">
+
+			{{ form_label(registrationForm.ville) }}
+			{{ form_widget(registrationForm.ville) }}
+			{{ form_errors(registrationForm.ville) }}
+		</div>
+
+	</div>
+        <div class="row">
+	
+		<div class="col mt-2 ">
+
+			{{ form_label(registrationForm.email) }}
+			{{ form_widget(registrationForm.email) }}
+			{{ form_errors(registrationForm.email) }}
+		</div>
+        <div class=" col mt-2 ">
+
+			{{ form_label(registrationForm.plainPassword) }}
+			{{ form_widget(registrationForm.plainPassword) }}
+			{{ form_errors(registrationForm.plainPassword) }}
+		</div>
+	</div>
+         <div class="row">
+	
+		<div class="col mt-2 ">
+            {{ form_row(registrationForm.agreeTerms) }}
+
+		</div>
+     
+	</div>
+       <div class="row ">
+	
+		<div class="col mt-4 d-flex justify-content-end">
+          <button type="submit" class="btn btn-success btn-lg">Créer mon compte</button>
+
+		</div>
+     
+	</div>
+        	<div class="col mt-4 ">
+         <a href="{{path('app_login')}}">   <button class="btn text-info btn-lg  " type="button">Déjà un compte ? se connecter
+    </button></a> 
+
+        
+    {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
