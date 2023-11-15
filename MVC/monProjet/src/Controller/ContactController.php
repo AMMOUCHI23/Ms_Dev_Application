@@ -5,8 +5,9 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\DemoFormType;
 use App\Form\ContactFormType;
+use App\Service\MailService;
 use Doctrine\ORM\EntityManagerInterface;
-use MailService;
+
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +19,7 @@ use Symfony\Component\Mime\Address;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function sendEmail(MailerInterface $mailer,Request $request, EntityManagerInterface $entityManager, MailService $ms): Response
+    public function sendEmail(Request $request, EntityManagerInterface $entityManager, MailService $mailservice): Response
     {
         $form = $this->createForm(ContactFormType::class);
         $form->handleRequest($request);
@@ -26,17 +27,28 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             //on crée une instance de Contact
-            $message = new Contact();
+            //$contact = new Contact();
             // Traitement des données du formulaire
-            $data = $form->getData();
+            $contact = $form->getData();
             //on stocke les données récupérées dans la variable $message
-            $contact = $data;
+            
 
             $entityManager->persist($contact);
             $entityManager->flush();
            // dd($data);
 
-           $email = $ms->sendMail('hello@example.com', $message->getEmail(), $message->getObject(), $message->getMessage() );
+           //utiliser le ;service 
+
+           $mailservice->sendMail(
+            "hello@example.com",
+             $contact->getEmail() ,
+              "Les contact",
+               $contact->getMessage(),
+               'emails/contact_email.html.twig',
+              ['contact' => $contact]
+            
+           
+        );
            //            dd($message->getEmail());
            
 
