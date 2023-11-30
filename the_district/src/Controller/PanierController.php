@@ -26,8 +26,9 @@ class PanierController extends AbstractController
            "quantite"=> $quantite
         ];
         $total+=$plat->getPrix()*$quantite;
-        
+       
        }
+       $session->set('total', $total);
         return $this->render('panier/panier.html.twig', [
           'data'  =>$data,
           'total'  =>$total

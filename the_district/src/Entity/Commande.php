@@ -7,7 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Monolog\DateTimeImmutable;
+use Monolog\DateTime;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: CommandeRepository::class)]
 class Commande
 {
@@ -31,6 +34,22 @@ class Commande
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     private ?Utilisateur $utilisateur = null;
+
+    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message:"Le champ d'adresse ne peut pas etre vide")]
+    #[Assert\Length(
+        min: 15,
+        max: 100,
+        minMessage: "Le champ d'adresse doit avoir minimum {{ limit }} caractères",
+        maxMessage: "Le champ d'adresse doit avoir maximum {{ limit }} caractères",
+    )]
+    private ?string $adresse_de_livraison = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $adresse_de_facturation = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $mode_de_paiement = null;
 
     public function __construct()
     {
@@ -117,6 +136,42 @@ class Commande
     public function setUtilisateur(?Utilisateur $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getAdresseDeLivraison(): ?string
+    {
+        return $this->adresse_de_livraison;
+    }
+
+    public function setAdresseDeLivraison(string $adresse_de_livraison): static
+    {
+        $this->adresse_de_livraison = $adresse_de_livraison;
+
+        return $this;
+    }
+
+    public function getAdresseDeFacturation(): ?string
+    {
+        return $this->adresse_de_facturation;
+    }
+
+    public function setAdresseDeFacturation(?string $adresse_de_facturation): static
+    {
+        $this->adresse_de_facturation = $adresse_de_facturation;
+
+        return $this;
+    }
+
+    public function getModeDePaiement(): ?string
+    {
+        return $this->mode_de_paiement;
+    }
+
+    public function setModeDePaiement(string $mode_de_paiement): static
+    {
+        $this->mode_de_paiement = $mode_de_paiement;
 
         return $this;
     }

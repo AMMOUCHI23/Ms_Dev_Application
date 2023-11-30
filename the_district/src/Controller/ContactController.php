@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 use App\Entity\Contact;
+use App\Entity\Utilisateur;
 use App\Form\ContactFormType;
+use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,5 +49,28 @@ class ContactController extends AbstractController
         ]);
     
 }
+    // controlleur pour afficher mes ccordonnées
+#[Route('/profil', name: 'profil')]
+public function monProfil(): Response
+{   
+    $utilisateur =$this->getUser(); 
     
+    return $this->render('contact/profil.html.twig', [
+        'utilisateur'=> $utilisateur
+    ]);
+
+}
+/*
+// controlleur pour modifier mes coordonnées
+#[Route('/profil', name: 'profil')]
+public function editProfil(): Response
+{   
+    $utilisateur =$this->getUser(); 
+    
+    return $this->render('contact/profil.html.twig', [
+        'utilisateur'=> $utilisateur
+    ]);
+
+}
+*/
 }

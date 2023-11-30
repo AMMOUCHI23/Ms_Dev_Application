@@ -1,13 +1,23 @@
 <?php
 
 namespace App\Entity;
-
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+#[ApiResource (
+    operations: [
+    new Get(), 
+    new GetCollection()],
+    normalizationContext: ['groups' => ['read']],
+)]
 class Categorie
 {
     #[ORM\Id]
@@ -16,6 +26,7 @@ class Categorie
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['read'])]
     private ?string $libelle = null;
 
     #[ORM\Column(length: 100)]
@@ -25,6 +36,7 @@ class Categorie
     private ?bool $active = null;
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Plat::class)]
+    #[Groups(['read'])]
     private Collection $plats;
 
     public function __construct()

@@ -8,7 +8,7 @@
 	<div class="row">
 
 		 {{ form_start(form, {'attr' : {'novalidate': 'novalidate'}} ) }}
-		<div class="my-custom-class-for-errors">
+		<div class="my-custom-class-for-errors text-danger">
 			{{ form_errors(form) }}
 		</div>
 	</div>
@@ -29,18 +29,21 @@
 	</div>
 	<div class="row">
 		<div class="col mx-auto my-2">
-			{{ form_row(form.email) }}
+		    {{ form_label(form.email) }}
+			{{ form_widget(form.email) }}
 			{{ form_errors(form.email) }}
 		</div>
 		
 		<div class="col mx-auto my-2">
-			{{ form_row(form.telephone) }}
+			 {{ form_label(form.telephone) }}
+			{{ form_widget(form.telephone) }}
 			{{ form_errors(form.telephone) }}
 		</div>
 	</div>
 	<div class="row">
 		<div class="col mx-auto my-2">
-			{{ form_row(form.message) }}
+			 {{ form_label(form.message) }}
+			{{ form_widget(form.message) }}
 			{{ form_errors(form.message) }}
 		</div>
 

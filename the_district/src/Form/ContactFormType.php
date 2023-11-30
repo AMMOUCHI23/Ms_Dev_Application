@@ -20,10 +20,11 @@ class ContactFormType extends AbstractType
         ->add('nom',TextType::class,[
             'attr'=>[
                 'class'=>"form-control",
+                'placeholder'=>'votre nom',
                 'minlength'=>'2',
                 'maxlength'=>'50'
             ],
-            'label'=>'Nom',
+            'label'=>'Nom*',
             'label_attr'=>[
                'class'=>"form-label mt-4"
             ]
@@ -31,6 +32,7 @@ class ContactFormType extends AbstractType
         ->add('prenom',TextType::class,[
             'attr'=>[
                 'class'=>"form-control",
+                'placeholder'=>'votre prenom',
                 'minlength'=>'2',
                 'maxlength'=>'50'
             ],
@@ -42,9 +44,10 @@ class ContactFormType extends AbstractType
         ->add('email', EmailType::class, [
             'attr'=>[
                 'class'=>"form-control",
+                'placeholder'=>'votre adresse Email',
                 
             ],
-            'label'=>'Email',
+            'label'=>'Email*',
             'label_attr'=>[
                'class'=>"form-label mt-4"
             ]
@@ -54,7 +57,8 @@ class ContactFormType extends AbstractType
         ->add('telephone',NumberType::class,[
             'attr'=>[
                 'class'=>"form-control",
-                'minlength'=>'2',
+                'placeholder'=>'votre numéro de téléphone',
+                'minlength'=>'10',
                 'maxlength'=>'20'
             ],
             'label'=>'Téléphone',
@@ -67,10 +71,11 @@ class ContactFormType extends AbstractType
         ->add('message', TextareaType::class, [
             'attr'=>[
                 'class'=>"form-control",
+                'placeholder'=>'votre demande maximum 1000 caractères',
                 'minlength'=>'2',
-                'maxlength'=>'300'
+                'maxlength'=>'1000'
             ],
-            'label'=>'Votre message',
+            'label'=>'Votre demmande*',
             'label_attr'=>[
                'class'=>"form-label mt-4"
             ]
@@ -78,10 +83,10 @@ class ContactFormType extends AbstractType
         )
         ->add('save', SubmitType::class, [
             'attr'=>[
-                'class'=>"btn btn-primary mt-4 "
+                'class'=>"btn btn-primary mt-4 mb-5 "
               
             ],
-            'label'=>'Envoyer votre message'
+            'label'=>'Envoyer votre demande'
          
             ])
         ;

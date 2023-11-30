@@ -6,8 +6,19 @@ use App\Repository\ArtistRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 
 #[ORM\Entity(repositoryClass: ArtistRepository::class)]
+#[ApiResource(operations: [
+    new Get(),  
+//    new Put(),
+//    new Patch(),
+//    new Delete(),
+    new GetCollection(),
+//    new Post(),
+])]
 class Artist
 {
     #[ORM\Id]

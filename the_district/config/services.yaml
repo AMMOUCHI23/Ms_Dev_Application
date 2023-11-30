@@ -22,3 +22,16 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    
+    # Déclaration du service MailService
+    App\Service\MailService:
+        arguments:
+            $mailer: '@mailer'
+
+     # Déclaration du service CommandeSubscriber    
+    App\EventSubscriber\CommandeSubscriber:
+       arguments:
+           $mailService: '@App\Service\MailService'
+       tags:
+           - { name: 'kernel.event_subscriber' }
