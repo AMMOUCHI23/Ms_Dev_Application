@@ -1,6 +1,5 @@
 import axios from "axios";
-import React,{ useEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { Button, Card, CardImg, Spinner } from "react-bootstrap";
 
 const MonPremierComposant = (props) => {

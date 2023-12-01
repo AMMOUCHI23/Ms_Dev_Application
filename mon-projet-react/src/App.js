@@ -4,6 +4,8 @@ import ParentComponent from './components/ParentComponent';
 import MyComponent from './MyComponent.js';
 import axios from "axios";
 import RechercheFilm from './components/RechercheFilm';
+import Tableau from './components/Tableau';
+import Graphique from './components/Graphique';
 
 const a = 4+5;
 
@@ -423,11 +425,22 @@ const App = () => {
     <>
     <div>
       <h1>Mon application React</h1>
+
+      <h2>Les exercices</h2>
       <ParentComponent />
     </div>
     <div>
+    <h2>Les exercices 4</h2>
     <h1>Recherche des films</h1>
     <RechercheFilm />
+    </div>
+    <div>
+    <h1>Création d'un tableau</h1>
+    <Tableau/>
+    </div>
+    <div>
+    <h1>Les graphes</h1>
+    <Graphique/>
     </div>
     </>
   );
