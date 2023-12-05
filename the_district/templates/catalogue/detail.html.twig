@@ -16,9 +16,6 @@
                     <div class="col-md-5 mx-3">';
                     <h2 class="text">{{ plat.libelle }}</h2>
                     <h4 class="py-3">{{ plat.prix }} €</h4>
-
-                    <label class="card-text text-end h5">Quantité </label>
-                    <input type="number" class="text-center quantite" placeholder="0" name="quantite">
                     <h5 class="text-primary mt-3">Ingrédients :</h5>
                     <p>{{ plat.description }}</p>
                     <a href="{{ path("ajoutPanier",{id: plat.id})}}"><input type="submit" class="btn btn-primary  my-2" value="Ajouter au panier" name="addpanier"> <br></a>

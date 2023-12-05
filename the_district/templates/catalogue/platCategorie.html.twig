@@ -14,9 +14,8 @@
             <div class="card-body">
             <h5 class="card-title">{{ plat.libelle }}</h5>
             <a href="{{path('detail',{id: plat.id})}}"><small class="card-text " >Cliquer pour plus de détails</small> </a>
-            <p class="#">{{ plat.prix}}</p> 
-            <label  class="card-text h5 " >Quantité</label>
-            <input type="number" class="quantite text-center" placeholder="0" name="quantite" >
+            <p class="prix"><strong>{{ plat.prix}} €</strong></p> 
+         
             <a href="{{ path("ajoutPanier", {id: plat.id})}}" class="btn btn-primary mx-3">Ajouter au panier</a>
         </div>
             </div>

@@ -9,14 +9,15 @@
 
 		{% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 		{% endblock %}
 		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 		{% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+			 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+			 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 		{% endblock %}
 
 	</head>
@@ -38,6 +39,7 @@
 						<li class="nav-item px-2">
 							<a class="nav-link active" aria-current="page" href="{{ path("categories")}}">Catégorie</a>
 						</li>
+						
 						<li class="nav-item px-2 ">
 							<div class="dropdown">
 								<a class="btn  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -102,14 +104,14 @@
 				<div class="footer-content row mt-3">
 					<div class="col-md-4 my-3">
 						<h2>A propos de nous</h2>
-						<p>Votre restaurant est dédié à fournir une expérience culinaire exceptionnelle avec des plats préparés avec soin et des ingrédients frais.</p>
+						<p>Au cœur d'Amiens, notre Restaurant Gastronomique propose une cuisine raffinée, élaborée à partir des produits locaux et de saison.</p>
 						<div class="contact">
 							<span>
 								<i class="fa fa-phone"></i>
-								+33 123 456 789</span>
+								09 72 72 39 36</span>
 							<span class="mx-2">
 								<i class="far fa-envelope "></i>
-								info@votrerestaurant.com</span>
+								htedistrict@gmail.com</span>
 						</div>
 
 					</div>
@@ -139,8 +141,8 @@
 						<h2>L'entreprise</h2>
 
 						<ul>
-							<li><a href="">Mentions Légales</a></li>
-							<li><a href="">Politique de confidentialité</a></li>
+							<li><a href="{{path('mentionsL')}}">Mentions Légales</a></li>
+							<li><a href="{{path('politique')}}">Politique de confidentialité</a></li>
 						
 						</ul>
 					</div>

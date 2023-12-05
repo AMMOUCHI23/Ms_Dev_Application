@@ -30,6 +30,7 @@ class Categorie
     private ?string $libelle = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['read'])]
     private ?string $image = null;
 
     #[ORM\Column]

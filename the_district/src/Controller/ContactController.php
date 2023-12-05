@@ -49,7 +49,7 @@ class ContactController extends AbstractController
         ]);
     
 }
-    // controlleur pour afficher mes ccordonnées
+    // controlleur pour afficher mes ccordonnées de l'utilisateur connecté
 #[Route('/profil', name: 'profil')]
 public function monProfil(): Response
 {   
@@ -60,6 +60,29 @@ public function monProfil(): Response
     ]);
 
 }
+    // controlleur pour afficher les Mentions légales
+    #[Route('/Mentions_Legales', name: 'mentionsL')]
+    public function mentionsLegales(): Response
+    {   
+    
+        
+        return $this->render('contact/mentionslegales.html.twig', [
+            
+        ]);
+    
+    }
+
+        // controlleur pour afficher la politique de confidentialité
+        #[Route('/plitique_de_confidentialite', name: 'politique')]
+        public function politiqueDeConfidentialite(): Response
+        {   
+        
+            
+            return $this->render('contact/politique.html.twig', [
+                
+            ]);
+        
+        }
 /*
 // controlleur pour modifier mes coordonnées
 #[Route('/profil', name: 'profil')]

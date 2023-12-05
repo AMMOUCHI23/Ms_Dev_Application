@@ -109,3 +109,7 @@ h3.nomCategorie{
     width: 30px; 
     margin-right: 10px; 
 }
+
+p.prix{
+    color:rgb(122, 9, 18);
+}
