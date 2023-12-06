@@ -6,11 +6,18 @@
 <div class="container  ">
     <h1 class="text-primary mt-4"> Formulaire de contact   </h1>
 	<div class="row">
+	
 
 		 {{ form_start(form, {'attr' : {'novalidate': 'novalidate'}} ) }}
 		<div class="my-custom-class-for-errors text-danger">
 			{{ form_errors(form) }}
 		</div>
+			{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+		
 	</div>
 	<div class="row">
 	
@@ -47,6 +54,16 @@
 			{{ form_errors(form.message) }}
 		</div>
 
+	</div>
+	<div class="row">
+		<div class="col mt-4 d-flex justify-content">
+         <a href="{{path('catalogue')}}"> <button type="button" class="btn border-info ">Revenir en arrière</button></a>
+
+		</div>
+		<div class="col mt-4 d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary ">Envoyer ma demande</button>
+
+		</div>
 	</div>
 	{{ form_end(form) }}
 

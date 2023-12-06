@@ -6,7 +6,7 @@
 {% block title %}Panier{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container ">
         <h1 class="my-4">Mon Panier</h1>
         
         {% if data|length > 0 %}
@@ -52,7 +52,7 @@
                 <tfoot>
                     <tr>
                         <th colspan="6" class="text-right"><h2 class="text-success">Total</h2></th>
-                        <td><h4>{{ total }} €</h4></td>
+                        <td><h4 class="prix">{{ total }} €</h4></td>
                     </tr>
                 </tfoot>
             </table>
@@ -61,7 +61,7 @@
             </div>
             <div class="row text-center my-5">
                 <div class="col-6">
-                    <a href="" class="btn btn-primary btn-lg m-4">Continuer mes achats</a>
+                    <a href="{{path('categories')}}" class="btn btn-primary btn-lg m-4">Continuer mes achats</a>
                 </div>
                 <div class="col-6">
                     <a href="{{path('commande')}}" class="btn btn-success btn-lg m-4 ">Passer la commande</a>
@@ -72,7 +72,7 @@
                 <p class="text-danger">Votre panier est vide, vous n'avez pas encore des produits dans votre panier.</p>
             </div>
 			  <div class="col-6">
-                    <a href="{{path('catalogue')}}" class="btn btn-primary btn-lg ">Remplire mon Panier</a>
+                    <a href="{{path('categories')}}" class="btn btn-primary btn-lg ">Remplire mon Panier</a>
                 </div>
         {% endif %}
     </div>

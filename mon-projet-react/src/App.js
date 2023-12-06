@@ -1,11 +1,11 @@
 
 import {React, useState, useEffect, useRef} from 'react';
 import ParentComponent from './components/ParentComponent';
-import MyComponent from './MyComponent.js';
-import axios from "axios";
+
 import RechercheFilm from './components/RechercheFilm';
 import Tableau from './components/Tableau';
 import Graphique from './components/Graphique';
+import Categorie from './components/Categorie';
 
 const a = 4+5;
 
@@ -441,6 +441,11 @@ const App = () => {
     <div>
     <h1>Les graphes</h1>
     <Graphique/>
+    </div>
+
+    <div>
+    <h1>Afficher les categories</h1>
+    <Categorie/>
     </div>
     </>
   );

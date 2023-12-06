@@ -31,6 +31,9 @@ class ContactController extends AbstractController
 
             $manager->persist($contact);
             $manager->flush();
+
+            // Ajouter un message flash de succès
+          $this->addFlash('success', 'Votre demande a été envoyée avec succès, elle sera traitée par nos services dans les meilleurs délais.');
            
             //Envoie de mail avec le service créer MailService
            /* $mailservice->sendMail(

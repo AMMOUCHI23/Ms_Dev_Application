@@ -22,10 +22,10 @@ const Categories = () => {
 
   return (
     <Container className="categories text-center text-primary my-4">
-      <h1>Nos Catégories des plats</h1>
+      <h1 className="my-4">Nos Catégories des plats</h1>
       <Row className="justify-content-center">
         {categories.map((category) => (
-          <Col key={category['@id']} sm={6} md={4} className="categories custom-div mx-3">
+          <Col key={category['@id']} sm={6} md={3} className="categories custom-div m-3">
             <a href="#">
               <Image
                 src={`assets/img/category/${category.image}`}

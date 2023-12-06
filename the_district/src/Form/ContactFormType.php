@@ -80,16 +80,9 @@ class ContactFormType extends AbstractType
                'class'=>"form-label mt-4"
             ]
             ]
-        )
-        ->add('save', SubmitType::class, [
-            'attr'=>[
-                'class'=>"btn btn-primary mt-4 mb-5 "
-              
-            ],
-            'label'=>'Envoyer votre demande'
-         
-            ])
-        ;
+            );
+        
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void

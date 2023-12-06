@@ -43,6 +43,7 @@ security:
          #- { path: ^/, roles: ROLE_CLIENT }
         # - { path: ^/login, roles: ROLE_CLIENT }
          - { path: ^/profil, roles: ROLE_USER }
+         - { path: ^/commande, roles: ROLE_USER }
 
     role_hierarchy:
         ROLE_CLIENT:  ROLE_USER
